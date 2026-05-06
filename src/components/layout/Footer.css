@@ -1,0 +1,70 @@
+.footer {
+  background: #0f1a30;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* GRID */
+.footer-container {
+  max-width: 1350px;
+  margin: auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+/* COL */
+.footer-col h4 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer-col p {
+  font-size: 14px;
+}
+
+.footer-col a {
+  display: block;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.footer-col a:hover {
+  color: #c9a84c;
+}
+
+/* LOGO */
+.footer-logo {
+  color: #c9a84c;
+}
+
+/* SOCIAL */
+.socials span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* INPUT */
+.footer-col input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: none;
+}
+
+.footer-col button {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: #c9a84c;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+}
