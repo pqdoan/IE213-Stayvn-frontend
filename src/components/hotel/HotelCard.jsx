@@ -1,16 +1,34 @@
-import { useNavigate } from "react-router-dom";
-import Card from "../common/Card";
-
-export default function HotelCard({ hotel }) {
-  const nav = useNavigate();
-
+const HotelCard = ({ hotel }) => {
   return (
-    <Card>
-      <div onClick={() => nav(`/hotel/${hotel.id}`)}>
+    <div className="hotel-card">
+      {/* IMAGE */}
+      <img
+        src={hotel.image?.[0]?.url || "https://via.placeholder.com/300x200"}
+        alt={hotel.name}
+      />
+
+      {/* INFO */}
+      <div className="hotel-info">
         <h3>{hotel.name}</h3>
-        <p>{hotel.location}</p>
-        <strong>{hotel.price}₫</strong>
+
+        <p className="location"> {hotel.address?.city || "Việt Nam"}</p>
+
+        {/* AMENITIES */}
+        <div className="amenities">
+          {hotel.amenities?.slice(0, 3).map((item, i) => (
+            <span key={i}>{item}</span>
+          ))}
+        </div>
+
+        {/* PRICE */}
+        <div className="price">
+          {hotel.minPrice
+            ? hotel.minPrice.toLocaleString() + "₫ / đêm"
+            : "Liên hệ"}
+        </div>
       </div>
-    </Card>
+    </div>
   );
-}
+};
+
+export default HotelCard;
