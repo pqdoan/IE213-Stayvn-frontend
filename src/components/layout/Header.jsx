@@ -1,3 +1,5 @@
+/*    ===== HEADER =====   */
+
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Header.css";
@@ -26,26 +28,25 @@ const Header = () => {
           <NavLink to="/offers" className="nav-link">
             Chi tiết KS
           </NavLink>
-          <NavLink to="/contact" className="nav-link">
+          <NavLink to="/booking" className="nav-link">
             Đặt phòng
           </NavLink>
-          <NavLink to="/offers" className="nav-link">
+          <NavLink to="/my-bookings" className="nav-link">
             Booking của tôi
           </NavLink>
-          <NavLink to="/contact" className="nav-link">
+          <NavLink to="/manager" className="nav-link">
             Quản lý KS
           </NavLink>
-          <NavLink to="/contact" className="nav-link">
+          <NavLink to="/admin" className="nav-link">
             Admin
           </NavLink>
         </nav>
 
         {/* RIGHT: Auth + User */}
         <div className="header-right">
-          <button className="btn-outline">Đăng nhập</button>
+          <button className="btn-out">Đăng nhập</button>
           <button className="btn-gold">Đăng ký</button>
 
-          {/* Avatar dropdown cho user đã đăng nhập */}
           <div className="user">
             <div className="avatar" onClick={() => setOpenMenu(!openMenu)}>
               U
@@ -61,44 +62,6 @@ const Header = () => {
               </div>
             )}
           </div>
-        </div>
-      </div>
-
-      {/* CENTER SEARCH */}
-      <div className="search-section">
-        <h2>Nền tảng đặt phòng khách sạn</h2>
-        <h1>Tìm nơi lưu trú hoàn hảo</h1>
-        <p>
-          Khám phá hàng trăm khách sạn cao cấp trên khắp Việt Nam – đặt phòng
-          nhanh chóng, giá tốt, dịch vụ tận tâm.
-        </p>
-
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Địa điểm (VD: Nha Trang, Đà Nẵng...)"
-          />
-          <input type="date" />
-          <input type="date" />
-          <select>
-            <option>1 khách</option>
-            <option>2 khách</option>
-            <option>3 khách</option>
-            <option>4+ khách</option>
-          </select>
-          <select>
-            <option>Tất cả hạng sao</option>
-            <option>3 sao</option>
-            <option>4 sao</option>
-            <option>5 sao</option>
-          </select>
-          <button className="btn-gold">Tìm kiếm</button>
-        </div>
-
-        {/* CTA bổ sung */}
-        <div className="cta-buttons">
-          <button className="btn-outline">Khám phá ưu đãi</button>
-          <button className="btn-gold">Top khách sạn</button>
         </div>
       </div>
     </header>
