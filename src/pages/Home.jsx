@@ -1,20 +1,39 @@
-import HotelCard from "../components/hotel/HotelCard";
+import { useEffect, useState } from "react";
+import "./Home.css";
 
-const data = [
-  { id: 1, name: "Resort Nha Trang", location: "Nha Trang", price: 800000 },
-  { id: 2, name: "Hotel Đà Nẵng", location: "Đà Nẵng", price: 600000 },
-];
+import hotelService from "../services/hotelService";
 
-export default function Home() {
+import DestinationSection from "../components/hotel/DestinationSection";
+import HotelGrid from "../components/hotel/HotelGrid";
+import FeatureSection from "../components/hotel/FeatureSection";
+import SearchSection from "../components/hotel/SearchSection"; // import đúng
+
+const Home = () => {
+  const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    fetchHotels();
+  }, []);
+
+  const fetchHotels = async () => {
+    try {
+      const res = await hotelService.getAll();
+      const hotelsData = res?.data?.data?.hotels || [];
+      setHotels(hotelsData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <div>
-      <h1>Khách sạn nổi bật</h1>
+    <div className="home">
+      <SearchSection />
 
-      <div className="grid grid-3">
-        {data.map((h) => (
-          <HotelCard key={h.id} hotel={h} />
-        ))}
-      </div>
+      <DestinationSection />
+      <HotelGrid hotels={hotels} />
+      <FeatureSection />
     </div>
   );
-}
+};
+
+export default Home;
