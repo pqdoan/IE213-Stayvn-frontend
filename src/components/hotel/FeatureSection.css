@@ -1,0 +1,36 @@
+.features {
+  background: linear-gradient(to right, #0f1a30, #1a2a4a);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: gold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.feature-grid div {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.feature-grid div:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
