@@ -1,30 +1,56 @@
+import "../../styles/HotelCard.css";
+import { useNavigate } from "react-router-dom";
+
 const HotelCard = ({ hotel }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/hotels/${hotel._id}`);
+  };
+
   return (
-    <div className="hotel-card">
+    <div className="hotel-card" onClick={handleClick}>
       {/* IMAGE */}
-      <img
-        src={hotel.image?.[0]?.url || "https://via.placeholder.com/300x200"}
-        alt={hotel.name}
-      />
+      <div className="hotel-image-wrapper">
+        <img
+          src={hotel.image?.[0]?.url || import.meta.env.VITE_FALLBACK_IMAGE}
+          alt={hotel.name}
+          loading="lazy"
+        />
+
+        <div className="hotel-badge">Best Choice</div>
+      </div>
 
       {/* INFO */}
       <div className="hotel-info">
-        <h3>{hotel.name}</h3>
+        <div className="hotel-top">
+          <h3>{hotel.name}</h3>
 
-        <p className="location"> {hotel.address?.city || "Việt Nam"}</p>
+          <div className="hotel-rating">⭐ 4.8</div>
+        </div>
+
+        <p className="hotel-location">📍 {hotel.address?.city || "Việt Nam"}</p>
+
+        <p className="hotel-description">
+          {hotel.description?.slice(0, 90)}...
+        </p>
 
         {/* AMENITIES */}
-        <div className="amenities">
-          {hotel.amenities?.slice(0, 3).map((item, i) => (
-            <span key={i}>{item}</span>
+        <div className="hotel-amenities">
+          {hotel.amenities?.slice(0, 4).map((item, index) => (
+            <span key={index}>{item}</span>
           ))}
         </div>
 
-        {/* PRICE */}
-        <div className="price">
-          {hotel.minPrice
-            ? hotel.minPrice.toLocaleString() + "₫ / đêm"
-            : "Liên hệ"}
+        {/* BOTTOM */}
+        <div className="hotel-bottom">
+          <div className="hotel-price">
+            {hotel.minPrice ? hotel.minPrice.toLocaleString() + "₫" : "Liên hệ"}
+
+            <span>/ đêm</span>
+          </div>
+
+          <button className="hotel-btn">Xem chi tiết</button>
         </div>
       </div>
     </div>

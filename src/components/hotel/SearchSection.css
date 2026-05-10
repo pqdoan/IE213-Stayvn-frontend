@@ -1,79 +1,471 @@
-/* SEARCH SECTION */
+/* =========================
+   SEARCH SECTION
+========================= */
 
 .search-section {
-  width: 100vw; /* chiếm toàn bộ chiều ngang màn hình */
-  height: 450px;
-  background: url("https://images.pexels.com/photos/13902050/pexels-photo-13902050.jpeg")
-    center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 50px;
+
+  width: 100vw;
+
+  min-height: 760px;
+
   left: 50%;
-  right: 50%;
-  transform: translateX(-50%); /* đảm bảo căn giữa nếu bị lệch */
+
+  transform: translateX(-50%);
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 120px 7%;
+
+  margin-bottom: 90px;
+
+  background:
+    linear-gradient(rgba(5, 10, 25, 0.75), rgba(5, 10, 25, 0.82)),
+    url("https://images.pexels.com/photos/13902050/pexels-photo-13902050.jpeg")
+      center/cover no-repeat;
 }
 
-.search-section::before {
-  content: "";
+/* =========================
+   OVERLAY
+========================= */
+
+.search-overlay {
   position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 208, 0, 0.12),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================
+   FLOATING EFFECT
+========================= */
+
+.floating-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  opacity: 0.3;
+}
+
+.circle-1 {
+  width: 320px;
+  height: 320px;
+
+  background: #2563eb;
+
+  top: -80px;
+  left: -100px;
+}
+
+.circle-2 {
+  width: 260px;
+  height: 260px;
+
+  background: #ffd000;
+
+  bottom: -100px;
+  right: -60px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.search-content {
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 1320px;
+
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
+
+  text-align: center;
 }
-.search-section h2,
-.search-section h1,
-.search-section p {
-  position: relative;
-  z-index: 2;
-}
-.search-section h2 {
-  font-size: 28px;
-  color: gold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-.search-section h1 {
-  font-size: 42px;
-  font-weight: 700;
+
+/* =========================
+   BADGE
+========================= */
+
+.hero-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 22px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(14px);
+
   color: #fff;
-  margin-bottom: 15px;
+
+  font-size: 0.95rem;
+
+  margin-bottom: 28px;
 }
+
+/* =========================
+   TEXT
+========================= */
+
+.search-section h2 {
+  color: #ffd000;
+
+  letter-spacing: 4px;
+
+  font-size: 1rem;
+
+  margin-bottom: 18px;
+
+  font-weight: 700;
+}
+
+.search-section h1 {
+  font-size: 4.5rem;
+
+  line-height: 1.1;
+
+  font-weight: 800;
+
+  color: white;
+
+  max-width: 980px;
+
+  margin: 0 auto 24px;
+}
+
+.search-section h1 span {
+  background: linear-gradient(90deg, #ffd000, #ffb800);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 .search-section p {
-  max-width: 600px;
-  color: #ddd;
-  margin: 0 auto 25px;
-  line-height: 1.6;
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  font-size: 1.15rem;
+
+  line-height: 1.9;
+
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* SEARCH BAR */
+/* =========================
+   SEARCH BAR
+========================= */
+
 .search-bar {
+  margin-top: 42px;
+
   position: relative;
-  z-index: 2;
-  margin-top: 10px;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  gap: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-.search-bar input,
-.search-bar select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  min-width: 200px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.4fr
+    1fr
+    1fr;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  border-radius: 26px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  max-width: 700px;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* CTA */
-.cta-buttons {
-  margin-top: 20px;
-  z-index: 2;
+/* =========================
+   SEARCH ITEM
+========================= */
+
+.search-item {
   display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 18px;
+
+  height: 64px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  transition: all 0.35s ease;
+}
+
+.search-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
+}
+
+.search-item svg {
+  color: #2563eb;
+
+  flex-shrink: 0;
+}
+
+.search-item input,
+.search-item select {
+  border: none;
+
+  outline: none;
+
+  width: 100%;
+
+  background: transparent;
+
+  font-size: 0.96rem;
+
+  color: #0f172a;
+}
+
+/* =========================
+   SEARCH BUTTON
+========================= */
+
+.search-btn {
+  height: 64px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  background: linear-gradient(135deg, #ffd000, #ffb800);
+
+  color: #0f172a;
+
+  font-weight: 700;
+
+  display: flex;
+
+  align-items: center;
+
   gap: 10px;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+
+  box-shadow: 0 14px 28px rgba(255, 208, 0, 0.28);
+}
+
+.search-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow: 0 20px 40px rgba(255, 208, 0, 0.4);
+}
+
+/* =========================
+   CTA BUTTONS
+========================= */
+
+.cta-buttons {
+  margin-top: 34px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 18px;
+}
+
+.btn-outline1,
+.btn-gold1 {
+  height: 56px;
+
+  padding: 0 30px;
+
+  border-radius: 16px;
+
+  font-weight: 700;
+
+  font-size: 0.95rem;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+.btn-outline1 {
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  color: white;
+
+  backdrop-filter: blur(12px);
+}
+
+.btn-outline1:hover {
+  transform: translateY(-3px);
+  background: gold;
+  color: #0f172a;
+
+  box-shadow: 0 18px 36px rgba(255, 208, 0, 0.45);
+}
+
+.btn-gold1 {
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  color: white;
+
+  backdrop-filter: blur(12px);
+}
+
+.btn-gold1:hover {
+  transform: translateY(-3px);
+  background: gold;
+  color: #0f172a;
+
+  box-shadow: 0 18px 36px rgba(255, 208, 0, 0.45);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.hero-stats {
+  margin-top: 60px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 24px;
+
+  flex-wrap: wrap;
+}
+
+.hero-stat-card {
+  min-width: 220px;
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(16px);
+
+  transition: all 0.35s ease;
+}
+
+.hero-stat-card:hover {
+  transform: translateY(-6px);
+
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.hero-stat-card h3 {
+  font-size: 2.1rem;
+
+  color: #ffd000;
+
+  margin-bottom: 8px;
+}
+
+.hero-stat-card p {
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 0.95rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+  .search-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    min-height: auto;
+
+    padding: 100px 5%;
+  }
+
+  .search-section h1 {
+    font-size: 2.8rem;
+  }
+
+  .search-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+  }
+
+  .hero-stat-card {
+    width: 100%;
+  }
 }
