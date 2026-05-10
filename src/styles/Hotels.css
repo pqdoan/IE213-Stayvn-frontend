@@ -28,7 +28,7 @@
   position: sticky;
   top: 70px;
   z-index: 50;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 
   background: linear-gradient(
     135deg,
