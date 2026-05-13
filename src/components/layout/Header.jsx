@@ -44,8 +44,12 @@ const Header = () => {
 
         {/* RIGHT: Auth + User */}
         <div className="header-right">
-          <button className="btn-out">Đăng nhập</button>
-          <button className="btn-gold">Đăng ký</button>
+          <Link to="/register" className="btn-gold">
+            Đăng ký
+          </Link>
+          <Link to="/login" className="btn-out">
+            Đăng nhập
+          </Link>
 
           <div className="user">
             <div className="avatar" onClick={() => setOpenMenu(!openMenu)}>
