@@ -15,6 +15,9 @@ import MyBookings from "../pages/MyBookings";
 import ManagerDashboard from "../pages/ManagerDashboard";
 import AdminPanel from "../pages/AdminPanel";
 
+import Register from "../pages/auth/Register";
+import Login from "../pages/auth/Login";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -25,6 +28,9 @@ const AppRoutes = () => {
       <Route path="/my-bookings" element={<MyBookings />} />
       <Route path="/manager" element={<ManagerDashboard />} />
       <Route path="/admin" element={<AdminPanel />} />
+
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 };
