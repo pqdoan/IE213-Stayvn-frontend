@@ -34,7 +34,7 @@ const Header = () => {
           <NavLink to="/my-bookings" className="nav-link">
             Booking của tôi
           </NavLink>
-          <NavLink to="/manager" className="nav-link">
+          <NavLink to="/hotel-manager" className="nav-link">
             Quản lý KS
           </NavLink>
           <NavLink to="/admin" className="nav-link">
@@ -59,7 +59,7 @@ const Header = () => {
               <div className="user-dropdown">
                 <Link to="/profile">Hồ sơ</Link>
                 <Link to="/my-bookings">Booking của tôi</Link>
-                <Link to="/manager">Quản lý KS</Link>
+                <Link to="/hotel-manager">Quản lý KS</Link>
                 <Link to="/admin">Admin</Link>
                 <div className="divider"></div>
                 <button>Đăng xuất</button>

@@ -1,7 +1,9 @@
 /* HEADER */
 .header {
   width: 100%;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   color: white;
 }
 
@@ -9,12 +11,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 72px;
   padding: 18px 60px;
   background: rgba(15, 26, 48, 0.9);
-  position: fixed;
-  top: 0;
   width: 100%;
-  z-index: 10;
 }
 
 /* LOGO */
