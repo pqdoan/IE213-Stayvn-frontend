@@ -1,13 +1,46 @@
-/* ============================================== */
-/*  HOTEL SERVICE */
-/* ============================================== */
-
+/* ========== Hotel Service =========*/
 import api from "./api";
 
 const hotelService = {
   // GET ALL HOTELS
-  // getAll: (params) => api.get("/hotels", { params }),
   getAll: (params) => api.get("/hotels?limit=100", { params }),
+
+  getMyHotels: async () => {
+      const res = await api.get("/hotels/me");
+      // return the inner data payload
+      return res.data && res.data.data ? res.data.data : null;
+  },
+
+  getHotelById: async (id) => {
+      const res = await api.get(`/hotels/${id}`);
+      return res.data && res.data.data ? res.data.data : null;
+  },
+
+  // UPDATE HOTEL
+  updateHotel: async (data, token) => {
+    const response = await api.patch("/hotels", data, {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    return response.data;
+  },
+
+  deleteHotel: async (id, token) => {
+    const response = await api.delete(`/hotels/${id}`, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${token}`
+        }
+    });
+    return response.data;
+  },
+
+  getHotelStats: async (hotelId) => {
+    const res = await api.get(`/hotels/${hotelId}/stats`);
+    return res.data && res.data.data ? res.data.data : null; 
+  },
+
 
   // GET ALL HOTELS
   getAll: (params) => api.get("/hotels", { params }),
@@ -50,6 +83,7 @@ const hotelService = {
   // DELETE HOTEL IMAGE
   deleteImage: (publicId) =>
     api.delete(`/hotels/me/images?public_id=${publicId}`),
+
 };
 
 export default hotelService;
