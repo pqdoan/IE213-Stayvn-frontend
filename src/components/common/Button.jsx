@@ -1,11 +1,12 @@
-const Button = ({ children, variant = "primary", ...props }) => {
-  let className = "btn";
+const Button = ({ children, variant = "primary", className = "", ...props }) => {
+  let buttonClassName = "btn";
 
-  if (variant === "outline") className += " btn-outline";
-  if (variant === "danger") className += " btn-danger";
+  if (variant === "outline") buttonClassName += " btn-outline";
+  if (variant === "danger") buttonClassName += " btn-danger";
+  if (className) buttonClassName += ` ${className}`;
 
   return (
-    <button className={className} {...props}>
+    <button className={buttonClassName} {...props}>
       {children}
     </button>
   );
