@@ -5,7 +5,9 @@ const ManagerLayout = ({ children }) => {
   return (
     <div style={{ display: "flex" }}>
       <ManagerSidebar />
-      <div style={{ flex: 1, padding: "20px" }}>{children}</div>
+      <div style={{ flex: 1, padding: "20px", marginLeft: "250px", marginTop: "70px" }}>
+        {children}
+      </div>
     </div>
   );
 };
