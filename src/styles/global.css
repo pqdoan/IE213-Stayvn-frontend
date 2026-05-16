@@ -6,6 +6,7 @@
   --text: #1a1a1a;
   --muted: #777;
   --border: #e5e5e5;
+  --header-height: 76px;
 }
 
 * {
@@ -20,6 +21,7 @@ body {
   color: var(--text);
   margin: 0;
   font-family: Arial, sans-serif;
+  padding-top: var(--header-height);
 }
 
 /* BUTTON */

@@ -1,0 +1,284 @@
+/* Admin Panel Styles */
+.admin-panel {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-panel h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.admin-tabs .tab-btn {
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.admin-tabs .tab-btn:hover {
+  color: #f39c12;
+}
+
+.admin-tabs .tab-btn.active {
+  color: #f39c12;
+  border-bottom-color: #f39c12;
+}
+
+.tab-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Admin Table */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.admin-table thead {
+  background: #f0f2f5;
+}
+
+.admin-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #666;
+}
+
+.admin-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+/* Status & Role Badges */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-transform: capitalize;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-approve {
+  background: #52c41a;
+  color: white;
+}
+
+.btn-approve:hover {
+  background: #45a517;
+}
+
+.btn-reject {
+  background: #f5222d;
+  color: white;
+}
+
+.btn-reject:hover {
+  background: #cf1322;
+}
+
+.btn-block {
+  background: #722ed1;
+  color: white;
+}
+
+.btn-block:hover {
+  background: #531dab;
+}
+
+.btn-unblock {
+  background: #13c2c2;
+  color: white;
+}
+
+.btn-unblock:hover {
+  background: #108080;
+}
+
+/* Error & Loading */
+.error-message {
+  background: #fef2f0;
+  color: #ff6b6b;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border-left: 4px solid #ff6b6b;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.modal {
+  background: #fff;
+  width: 800px;
+  max-width: 95%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+.modal-body {
+  padding: 16px;
+  max-height: 70vh;
+  overflow: auto;
+}
+.modal-images {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.modal-images img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .admin-table {
+    font-size: 13px;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-panel {
+    padding: 10px;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+  }
+
+  .admin-tabs .tab-btn {
+    padding: 10px;
+    text-align: left;
+  }
+
+  /* Mobile table - scrollable */
+  .admin-table {
+    font-size: 12px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .admin-table thead,
+  .admin-table tbody,
+  .admin-table th,
+  .admin-table td,
+  .admin-table tr {
+    display: block;
+  }
+
+  .admin-table thead tr {
+    display: none;
+  }
+
+  .admin-table td {
+    padding: 8px;
+    position: relative;
+    padding-left: 100px;
+  }
+
+  .admin-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 8px;
+    font-weight: bold;
+    width: 90px;
+  }
+}

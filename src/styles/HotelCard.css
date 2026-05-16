@@ -220,14 +220,16 @@
   justify-content: space-between;
 
   gap: 14px;
+
+  flex-wrap: wrap; /* Cho phép xuống hàng nếu nội dung quá dài */
 }
 
 /* PRICE */
 
 .hotel-price {
-  font-size: 24px;
+  font-size: 14px;
 
-  font-weight: 800;
+  font-weight: 400;
 
   color: #0f172a;
 }
@@ -249,9 +251,10 @@
 
   cursor: pointer;
 
-  padding: 12px 20px;
+  padding: 6px 36px; /* giảm chiều cao, tăng chiều dài */
+  border-radius: 12px;
 
-  border-radius: 14px;
+  margin-right: 8px;
 
   background: linear-gradient(135deg, #0f172a, #1e293b);
 
@@ -262,6 +265,8 @@
   font-weight: 600;
 
   transition: all 0.3s ease;
+
+  flex-shrink: 0; /* không bị co lại khi giá tiền dài */
 }
 
 .hotel-btn:hover {

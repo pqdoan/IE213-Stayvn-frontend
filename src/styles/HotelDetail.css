@@ -1,0 +1,262 @@
+/* ==============================================
+   HOTEL DETAIL
+============================================== */
+
+.hotel-detail-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+/* HERO */
+
+.hotel-detail-hero {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+}
+
+.hotel-detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-detail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.2));
+}
+
+.hotel-detail-hero-content {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  color: white;
+}
+
+.hotel-detail-badge {
+  display: inline-flex;
+  background: #d4af37;
+  color: black;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.hotel-detail-hero-content h1 {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.hotel-detail-location {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.hotel-detail-stars {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.hotel-detail-rating-number {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+/* BODY */
+
+.hotel-detail-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: -70px auto 60px;
+  position: relative;
+  z-index: 5;
+
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+}
+
+/* MAIN */
+
+.hotel-detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hotel-detail-section {
+  background: white;
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.hotel-detail-section h2 {
+  margin-bottom: 18px;
+  font-size: 28px;
+}
+
+.hotel-detail-section p {
+  line-height: 1.8;
+  color: #555;
+}
+
+/* AMENITIES */
+
+.hotel-detail-amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hotel-detail-amenity {
+  background: #f4f6f9;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+}
+
+/* GALLERY */
+
+.hotel-detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.hotel-detail-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* SIDEBAR */
+
+.hotel-detail-sidebar {
+  position: sticky;
+  top: 110px;
+  height: fit-content;
+}
+
+.booking-card {
+  background: white;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.booking-price {
+  font-size: 38px;
+  font-weight: 800;
+  color: #111;
+}
+
+.booking-price span {
+  font-size: 16px;
+  color: #777;
+}
+
+.booking-meta {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-meta strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.booking-meta p {
+  color: #666;
+}
+
+.booking-btn {
+  width: 100%;
+  margin-top: 30px;
+  height: 58px;
+  border: none;
+  border-radius: 18px;
+  background: #d4af37;
+  color: black;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.booking-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* LOADING */
+
+.hotel-detail-loading {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner {
+  width: 56px;
+  height: 56px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ERROR */
+
+.hotel-detail-error {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotel-detail-error button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 14px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+  .hotel-detail-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hotel-detail-sidebar {
+    position: static;
+  }
+
+  .hotel-detail-hero-content {
+    left: 30px;
+    right: 30px;
+  }
+
+  .hotel-detail-hero-content h1 {
+    font-size: 38px;
+  }
+}
