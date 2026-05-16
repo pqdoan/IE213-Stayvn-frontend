@@ -38,7 +38,7 @@ const HotelGrid = ({ hotels, loading, error }) => {
     <section className="hotels">
       <h2>Khách sạn nổi bật</h2>
       <div className="hotel-grid">
-        {hotels.map((hotel) => (
+        {hotels.slice(0, 4).map((hotel) => (
           <HotelCard key={hotel._id} hotel={hotel} />
         ))}
       </div>
