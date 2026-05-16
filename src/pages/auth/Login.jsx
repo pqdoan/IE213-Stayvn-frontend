@@ -80,7 +80,8 @@ const Login = () => {
 
       localStorage.setItem("token", response.data?.data?.token);
 
-      localStorage.setItem("user", JSON.stringify(response.data?.data));
+      // localStorage.setItem("user", JSON.stringify(response.data?.data));
+      localStorage.setItem("user", JSON.stringify(response.data?.data?.user));
 
       navigate("/");
     } catch (err) {

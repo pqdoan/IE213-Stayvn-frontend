@@ -22,6 +22,7 @@ const Hotels = () => {
   const guestsParam = searchParams.get("guests") || 1;
   const checkInParam = searchParams.get("checkInDate") || "";
   const checkOutParam = searchParams.get("checkOutDate") || "";
+  const starsParam = searchParams.get("stars") || "";
 
   /* =====================================================
       STATES
@@ -38,6 +39,7 @@ const Hotels = () => {
     guests: guestsParam,
     checkInDate: checkInParam,
     checkOutDate: checkOutParam,
+    stars: starsParam,
 
     minPrice: "",
     maxPrice: "",
@@ -45,11 +47,12 @@ const Hotels = () => {
     amenities: [],
 
     sort: "recommended",
+    guestDropdownOpen: false,
   });
 
   /* =====================================================
-      FETCH HOTELS
-  ===================================================== */
+    FETCH HOTELS
+===================================================== */
 
   const fetchHotels = async () => {
     try {
@@ -57,48 +60,114 @@ const Hotels = () => {
 
       setError("");
 
+      /* BUILD PARAMS */
+
       const params = {
-        city: filters.city,
-        guests: filters.guests,
-        checkInDate: filters.checkInDate,
-        checkOutDate: filters.checkOutDate,
+        city: filters.city?.trim() || "",
 
-        minPrice: filters.minPrice,
-        maxPrice: filters.maxPrice,
+        guests: Number(filters.guests) || 1,
 
-        amenities: filters.amenities.join(","),
+        checkInDate: filters.checkInDate || "",
 
+        checkOutDate: filters.checkOutDate || "",
+
+        minPrice: filters.minPrice || "",
+
+        maxPrice: filters.maxPrice || "",
+
+        amenities:
+          filters.amenities.length > 0 ? filters.amenities.join(",") : "",
+
+        stars: filters.stars || "",
         page: 1,
+
         limit: 20,
       };
 
+      /* API */
+
       const response = await hotelService.getAll(params);
 
-      let hotelsData = response.data?.data?.hotels || [];
+      let hotelsData = response?.data?.data?.hotels || [];
+
+      /* CLONE ARRAY BEFORE SORT */
+
+      hotelsData = [...hotelsData];
 
       /* SORT */
 
-      if (filters.sort === "price-low") {
-        hotelsData.sort((a, b) => a.minPrice - b.minPrice);
+      switch (filters.sort) {
+        case "price-low":
+          hotelsData.sort((a, b) => (a.minPrice || 0) - (b.minPrice || 0));
+          break;
+
+        case "price-high":
+          hotelsData.sort((a, b) => (b.minPrice || 0) - (a.minPrice || 0));
+          break;
+
+        default:
+          break;
       }
 
-      if (filters.sort === "price-high") {
-        hotelsData.sort((a, b) => b.minPrice - a.minPrice);
-      }
+      /* SET DATA */
 
       setHotels(hotelsData);
     } catch (err) {
       console.log(err);
 
-      setError("Không thể tải danh sách khách sạn");
+      setError(
+        err?.response?.data?.message || "Không thể tải danh sách khách sạn",
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  /* =====================================================
+    SYNC FILTERS WITH URL
+===================================================== */
+
+  useEffect(() => {
+    setFilters((prev) => ({
+      ...prev,
+
+      city: searchParams.get("city") || "",
+
+      guests: Number(searchParams.get("guests")) || 1,
+
+      checkInDate: searchParams.get("checkInDate") || "",
+
+      checkOutDate: searchParams.get("checkOutDate") || "",
+
+      stars: searchParams.get("stars") || "",
+    }));
+  }, [searchParams]);
+
+  /* =====================================================
+    FETCH WHEN FILTERS CHANGE
+===================================================== */
+
   useEffect(() => {
     fetchHotels();
-  }, []);
+  }, [
+    filters.city,
+
+    filters.guests,
+
+    filters.checkInDate,
+
+    filters.checkOutDate,
+
+    filters.stars,
+
+    filters.minPrice,
+
+    filters.maxPrice,
+
+    filters.sort,
+
+    filters.amenities,
+  ]);
 
   /* =====================================================
       HANDLERS
@@ -118,7 +187,29 @@ const Hotels = () => {
   };
 
   const handleSearch = () => {
-    fetchHotels();
+    const params = new URLSearchParams();
+
+    if (filters.city) {
+      params.append("city", filters.city);
+    }
+
+    if (filters.guests) {
+      params.append("guests", filters.guests);
+    }
+
+    if (filters.checkInDate) {
+      params.append("checkInDate", filters.checkInDate);
+    }
+
+    if (filters.checkOutDate) {
+      params.append("checkOutDate", filters.checkOutDate);
+    }
+
+    if (filters.stars) {
+      params.append("stars", filters.stars);
+    }
+
+    navigate(`/hotels?${params.toString()}`);
   };
 
   const handleHotelClick = (hotelId) => {
@@ -227,6 +318,29 @@ const Hotels = () => {
                   ))}
                 </div>
               )}
+            </div>
+
+            {/* STARS */}
+
+            <div className="search-box">
+              <select
+                className="search-select"
+                value={filters.stars}
+                onChange={(e) =>
+                  setFilters({
+                    ...filters,
+                    stars: e.target.value,
+                  })
+                }
+              >
+                <option value="">Tất cả hạng sao</option>
+
+                <option value="3">3 sao</option>
+
+                <option value="4">4 sao</option>
+
+                <option value="5">5 sao</option>
+              </select>
             </div>
 
             {/* BUTTON */}
@@ -416,13 +530,32 @@ const Hotels = () => {
                       alt={hotel.name}
                     />
 
-                    <div className="hotel-badge">⭐ {hotel.rating || 4.8}</div>
+                    <div className="hotel-badge">
+                      ⭐{" "}
+                      {hotel.avgRating != null
+                        ? hotel.avgRating.toFixed(1)
+                        : "4.8"}
+                    </div>
                   </div>
 
                   {/* INFO */}
 
                   <div className="hotel-main">
-                    <div className="hotel-stars">★★★★★</div>
+                    <div className="hotel-stars">
+                      {Array.from({ length: 5 }, (_, index) => (
+                        <span key={index}>
+                          {index < Math.floor(hotel.avgRating ?? 4)
+                            ? "⭐"
+                            : "☆"}
+                        </span>
+                      ))}
+
+                      <span className="hotel-rating-number">
+                        {hotel.avgRating != null
+                          ? hotel.avgRating.toFixed(1)
+                          : "4.0"}
+                      </span>
+                    </div>
 
                     <h2 className="hotel-name">{hotel.name}</h2>
 
@@ -430,10 +563,7 @@ const Hotels = () => {
                       📍 {hotel.address?.city || "Việt Nam"}
                     </div>
 
-                    <p className="hotel-description">
-                      Khách sạn cao cấp với đầy đủ tiện nghi hiện đại, vị trí
-                      trung tâm và dịch vụ chuẩn quốc tế.
-                    </p>
+                    <p className="hotel-description">{hotel.description}</p>
 
                     <div className="hotel-amenities">
                       {hotel.amenities?.slice(0, 5).map((item, index) => (
