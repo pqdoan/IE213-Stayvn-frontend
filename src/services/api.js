@@ -30,8 +30,15 @@ api.interceptors.response.use(
     console.error("API ERROR:", error);
 
     // TOKEN EXPIRED
+    // if (error.response?.status === 401) {
+    //   localStorage.removeItem("token");
+    // }
+
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      window.location.href = "/login";
     }
 
     return Promise.reject(error);
