@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom";
-import Sidebar from "../components/layout/Sidebar";
+import React from "react";
+import AdminSidebar from "../components/layout/AdminSidebar";
 
-export default function AdminLayout() {
+const AdminLayout = ({ children }) => {
   return (
     <div style={{ display: "flex" }}>
-      <Sidebar />
-      <div style={{ flex: 1, padding: 20 }}>
-        <Outlet />
+      <AdminSidebar />
+      <div style={{ flex: 1, padding: "20px", marginLeft: "250px", marginTop: "70px" }}>
+        {children}
       </div>
     </div>
   );
-}
+};
+
+export default AdminLayout;
