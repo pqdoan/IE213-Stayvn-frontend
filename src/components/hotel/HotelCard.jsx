@@ -5,7 +5,9 @@ const HotelCard = ({ hotel }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/hotels/${hotel._id}`);
+    console.log(hotel);
+
+    navigate(`/hotel/${hotel._id}`);
   };
 
   return (
@@ -18,7 +20,7 @@ const HotelCard = ({ hotel }) => {
           loading="lazy"
         />
 
-        <div className="hotel-badge">Best Choice</div>
+        <div className="hotel-badge">Best choice</div>
       </div>
 
       {/* INFO */}
@@ -26,13 +28,17 @@ const HotelCard = ({ hotel }) => {
         <div className="hotel-top">
           <h3>{hotel.name}</h3>
 
-          <div className="hotel-rating">⭐ 4.8</div>
+          <div className="hotel-rating">
+            ⭐ {hotel.avgRating != null ? hotel.avgRating.toFixed(1) : "4.0"}
+          </div>
         </div>
 
         <p className="hotel-location">📍 {hotel.address?.city || "Việt Nam"}</p>
 
         <p className="hotel-description">
-          {hotel.description?.slice(0, 90)}...
+          {hotel.description
+            ? hotel.description.slice(0, 90) + "..."
+            : "Khách sạn cao cấp với đầy đủ tiện nghi hiện đại"}
         </p>
 
         {/* AMENITIES */}
