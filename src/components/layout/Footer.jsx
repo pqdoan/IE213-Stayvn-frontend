@@ -1,61 +1,4 @@
-// import "./Footer.css";
-
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <div className="footer-top">
-//         {/* BRAND */}
-//         <div className="footer-col">
-//           <h2>StayVN</h2>
-//           <p>
-//             Đặt phòng khách sạn nhanh chóng, tiện lợi và giá tốt nhất tại Việt
-//             Nam.
-//           </p>
-
-//           <div className="socials">
-//             <span>🌐</span>
-//             <span>📘</span>
-//             <span>📸</span>
-//           </div>
-//         </div>
-
-//         {/* LINKS */}
-//         <div className="footer-col">
-//           <h4>Khám phá</h4>
-//           <a>Khách sạn</a>
-//           <a>Địa điểm</a>
-//           <a>Ưu đãi</a>
-//         </div>
-
-//         <div className="footer-col">
-//           <h4>Công ty</h4>
-//           <a>Về chúng tôi</a>
-//           <a>Tuyển dụng</a>
-//           <a>Blog</a>
-//         </div>
-
-//         <div className="footer-col">
-//           <h4>Hỗ trợ</h4>
-//           <a>Trung tâm trợ giúp</a>
-//           <a>Chính sách</a>
-//           <a>Liên hệ</a>
-//         </div>
-
-//         {/* NEWSLETTER */}
-//         <div className="footer-col">
-//           <h4>Nhận ưu đãi</h4>
-//           <input placeholder="Email của bạn..." />
-//           <button>Đăng ký</button>
-//         </div>
-//       </div>
-
-//       <div className="footer-bottom">© 2026 StayVN · All rights reserved</div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -100,7 +43,9 @@ const Footer = () => {
         <div className="footer-col">
           <h4>Nhận ưu đãi</h4>
           <input placeholder="Nhập email..." />
-          <button>Đăng ký</button>
+          <Link to="/register" className="footer-register">
+            Đăng ký
+          </Link>
         </div>
       </div>
 

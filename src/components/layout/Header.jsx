@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useHotelContext } from "../../context/HotelContext";
 import "./Header.css";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { hotel } = useHotelContext();
+  const hotelDetailPath = hotel ? `/hotel/${hotel._id}` : "/hotels";
 
   return (
     <header className="header">
@@ -19,25 +22,66 @@ const Header = () => {
 
         {/* CENTER: Navigation */}
         <nav className="nav">
-          <NavLink to="/" className="nav-link">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Trang chủ
           </NavLink>
-          <NavLink to="/hotels" className="nav-link">
+
+          <NavLink
+            to="/hotels"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Khách sạn
           </NavLink>
-          <NavLink to="/offers" className="nav-link">
+
+          <NavLink
+            to={hotelDetailPath}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Chi tiết KS
           </NavLink>
-          <NavLink to="/booking" className="nav-link">
+
+          <NavLink
+            to="/booking"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Đặt phòng
           </NavLink>
-          <NavLink to="/my-bookings" className="nav-link">
+
+          <NavLink
+            to="/my-bookings"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Booking của tôi
           </NavLink>
-          <NavLink to="/manager" className="nav-link">
+
+          <NavLink
+            to="/manager"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Quản lý KS
           </NavLink>
-          <NavLink to="/admin" className="nav-link">
+
+          <NavLink
+            to="/admin"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Admin
           </NavLink>
         </nav>

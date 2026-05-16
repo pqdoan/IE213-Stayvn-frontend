@@ -68,3 +68,41 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 13px;
 }
+
+.footer-register {
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  text-align: center;
+  padding: 8px 24px; /* nút dài hơn, thấp hơn */
+  border-radius: 8px;
+
+  background: linear-gradient(135deg, gold, #facc15);
+  color: #111827;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.footer-register:hover {
+  background: linear-gradient(135deg, #ffd182, gold);
+  color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.footer-register input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.footer-col button,
+.footer-col a {
+  text-decoration: none; /* xóa gạch chân */
+}

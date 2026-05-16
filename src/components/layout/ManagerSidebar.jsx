@@ -1,18 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
 const ManagerSidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <h3>Manager Panel</h3>
+        <h3>🏨 Manager</h3>
       </div>
 
       <div className="sidebar-menu">
-        <div className="sidebar-item active">📊 Dashboard</div>
-        <div className="sidebar-item">🏨 Thông tin KS</div>
-        <div className="sidebar-item">🛏️ Phòng</div>
-        <div className="sidebar-item">📋 Booking</div>
-        <div className="sidebar-item">✨ Dịch vụ</div>
+        <Link to="/manager" className="sidebar-item">
+          📊 Dashboard
+        </Link>
+        <Link to="/manager" className="sidebar-item">
+          📋 Quản lý Booking
+        </Link>
+        <Link to="/manager" className="sidebar-item">
+          🛏️ Quản lý Phòng
+        </Link>
+        <Link to="/manager" className="sidebar-item">
+          ✨ Quản lý Dịch vụ
+        </Link>
+        <Link to="/manager" className="sidebar-item">
+          🏨 Thông tin KS
+        </Link>
+        <Link to="/" className="sidebar-item">
+          🏠 Về trang chủ
+        </Link>
       </div>
     </div>
   );
